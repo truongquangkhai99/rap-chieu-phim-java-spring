@@ -49,10 +49,12 @@
           <i class="fas fa-user-circle fa-fw"></i>
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-          <a class="dropdown-item" href="#">Chào</a>
-          <a class="dropdown-item" href="#"><%=SecurityUtils.getPrincipal().getFullName()%></a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="<c:url value='/logout'/>" data-toggle="modal" data-target="#logoutModal">Đăng xuất</a>
+          <security:authorize access="isAuthenticated()">
+	          <a class="dropdown-item" href="#">Chào</a>
+	          <a class="dropdown-item" href="#"><%=SecurityUtils.getPrincipal().getFullName()%></a>
+	          <div class="dropdown-divider"></div>
+	          <a class="dropdown-item" href="<c:url value='/logout'/>" data-toggle="modal" data-target="#logoutModal">Đăng xuất</a>
+	      </security:authorize>
         </div>
       </li>
     </ul>

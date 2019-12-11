@@ -22,8 +22,6 @@
 
    <context:component-scan base-package="com.qnu.controller, com.qnu.api" />
 
-   <mvc:annotation-driven />
-
    <bean
       class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 
@@ -41,7 +39,6 @@
    		<bean class="com.qnu.interceptor.MenuHandleInterceptor"></bean>
    </mvc:interceptors>
    
+   <mvc:annotation-driven />
    <mvc:resources location="/template/" mapping="/template/**"/>
-   
-   
 </beans>

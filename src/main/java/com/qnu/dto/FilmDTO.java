@@ -74,7 +74,7 @@ public class FilmDTO extends AbstractDTO<FilmDTO>{
 		this.trailer = trailer;
 	}
 	public String getThumbnailBase64() {
-		return thumbnailBase64.split(",")[1];
+		return thumbnailBase64;
 	}
 	public void setThumbnailBase64(String thumbnailBase64) {
 		this.thumbnailBase64 = thumbnailBase64;

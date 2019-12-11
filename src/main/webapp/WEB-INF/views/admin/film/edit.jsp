@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
-<c:url var="filmURL" value="/admin-film-list"/>
 <c:url var="editFilmURL" value="/admin-film-edit"/>
 <c:url var="filmAPI" value="/api-film"/>
+<c:url var="filmURL" value="/admin-film-list"/>
 
 <!DOCTYPE html>
 <html>
@@ -108,7 +108,7 @@
 		    if (files != undefined) {
 	            var reader = new FileReader();
 	            reader.onload = function(e) {
-	                data["thumbnailBase64"] = e.target.result;
+	                data["thumbnailBase64"] = (e.target.result).split(",")[1];
 	                
 	                var id = $('#filmId').val();
 	    			if (id == "") {

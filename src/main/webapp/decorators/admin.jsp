@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
-
+<%@ page import="com.qnu.util.SecurityUtils" %>
 <!DOCTYPE html>
 <html>
 
@@ -19,7 +19,7 @@
 
 	<!-- Page level plugin CSS-->
 	<link href="<c:url value='/template/admin/vendor/datatables/dataTables.bootstrap4.css'/>" rel="stylesheet">
-
+	
 	<!-- Custom styles for this template-->
 	<link href="<c:url value='/template/admin/css/sb-admin.css'/>" rel="stylesheet">
 	<link href="<c:url value='/template/admin/css/bootstrap.min.css'/>" rel="stylesheet" type="text/css">
@@ -47,7 +47,7 @@
 	</div>
 	
 	<!-- Bootstrap core JavaScript-->
-	<script src="<c:url value='/template/admin/vendor/vendor/bootstrap/js/bootstrap.min.js'/>"></script>
+<%-- 	<script src="<c:url value='/template/admin/vendor/bootstrap/js/bootstrap.min.js'/>"></script> --%>
 	<script src="<c:url value='/template/admin/vendor/bootstrap/js/bootstrap.bundle.min.js'/>"></script>
 
 	<!-- Core plugin JavaScript-->

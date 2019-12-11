@@ -17,8 +17,8 @@
       	<c:forEach var="item" items="${model.listResult}">
 	        <div class="col-lg-4 col-sm-6 portfolio-item">
 	          <div class="card h-100">
-	            <a href="#"><img class="card-img-top" src="${pageContext.request.contextPath}/upload/thumbnail/${item.thumbnail}" alt="${item.title}"/></a>
-	            <div class="card-body">
+	            <a href="#"><img class="card-img-top" src="<c:url value="/template/upload/thumbnail/${item.thumbnail}"/>" alt="${item.title}"/></a>
+	            <div class="card-body">			
 	              <h4 class="card-title">
 	                <a href="#">${item.title}</a>
 	              </h4>

@@ -20,7 +20,7 @@ public class MessageUtil {
 			result.put("message", "Xóa thành công!");
 			result.put("alert", "success");
 		} else if (message.equals("error_system")) {
-			result.put("message", "Đã có lỗi!");
+			result.put("message", "Lỗi hệ thống!");
 			result.put("alert", "danger");
 		}
 		return result;
