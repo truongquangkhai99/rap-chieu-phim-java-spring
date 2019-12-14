@@ -21,7 +21,7 @@
 					<p class="text-white-75 font-weight-light mb-5">Qnu Cinema là website đặt quản lý rạp 
 						chiếu phim đơn giản sử dụng Spring MVC + Spring Security + 
 						Spring Data JPA (Hibernate implementation)</p>
-					<a class="btn btn-primary btn-xl js-scroll-trigger" href="#">Xem lịch chiếu phim</a>
+					<a class="btn btn-primary btn-xl js-scroll-trigger" href="<c:url value='/schedule'/>">Xem lịch chiếu phim</a>
 				</div>
 			</div>
 		</div>

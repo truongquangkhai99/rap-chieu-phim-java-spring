@@ -1,7 +1,10 @@
 package com.qnu.service.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -63,5 +66,15 @@ public class FilmService implements IFilmService {
 		for (long id: ids) {
 			filmRepository.delete(id);
 		}
+	}
+
+	@Override
+	public Map<String, String> findAll() {
+		Map<String, String> result = new HashMap<>();
+		List<FilmEntity> entities = filmRepository.findAll();
+		for (FilmEntity item: entities) {
+			result.put(item.getId().toString(), item.getTitle());
+		}
+		return result;
 	}
 }

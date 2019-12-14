@@ -6,4 +6,6 @@ import com.qnu.entity.FilmEntity;
 
 public interface FilmRepository extends JpaRepository<FilmEntity, Long>{
 
+	FilmEntity findOneById(Long id);
+
 }

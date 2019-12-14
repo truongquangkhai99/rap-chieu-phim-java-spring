@@ -110,6 +110,7 @@
 	            reader.onload = function(e) {
 	                data["thumbnailBase64"] = (e.target.result).split(",")[1];
 	                
+	             	// nếu tồn tại id trong form thì gọi update ngược lại thì gọi add
 	                var id = $('#filmId').val();
 	    			if (id == "") {
 	    				addFilm(data);
@@ -119,9 +120,6 @@
 	            };
 	            reader.readAsDataURL(files);
 			}
-		    
-		 	// nếu tồn tại id trong form thì gọi update ngược lại thì gọi add
-			
 		});
 		
 		function addFilm(data) {
@@ -132,7 +130,7 @@
 	            data: JSON.stringify(data),
 	            dataType: 'json',
 	            success: function (result) {
-	            	window.location.href = "${editFilmURL}?id="+result.id+"&message=insert_success";
+	            	window.location.href = "${filmURL}?page=1&limit=8&message=insert_success";
 	            },
 	            error: function (error) {
 	            	window.location.href = "${filmURL}?page=1&limit=8&message=error_system";
@@ -150,7 +148,7 @@
 	            data: JSON.stringify(data), 	// chuyển đổi data nhận được thành JSON
 	            dataType: 'json',				// định nghĩa kiểu trả về cho client là json
 	            success: function (result) {
-	            	window.location.href = "${editFilmURL}?id="+result.id+"&message=update_success";
+	            	window.location.href = "${filmURL}?page=1&limit=8&message=update_success";
 	            },
 	            error: function (error) {
 	            	window.location.href = "${filmURL}?page=1&limit=8&message=error_system";

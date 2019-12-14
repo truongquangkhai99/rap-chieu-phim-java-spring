@@ -13,7 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.qnu.dto.FilmDTO;
 import com.qnu.service.IFilmService;
-import com.qnu.util.MessageUtil;
 
 @Controller(value = "filmControllerOfWeb")
 public class FilmController {

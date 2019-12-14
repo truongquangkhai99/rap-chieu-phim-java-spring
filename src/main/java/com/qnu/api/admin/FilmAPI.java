@@ -5,7 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Base64;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.ServletContext;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +24,13 @@ public class FilmAPI {
 	@Autowired
 	private IFilmService filmService;
 	
+	@Autowired
+	private ServletContext context; 
+	
 	@PostMapping("/api-film")
-	public FilmDTO createFilm(@RequestBody FilmDTO filmDTO, HttpServletRequest request) {
-		String root = request.getServletContext().getRealPath("upload");
+	public FilmDTO createFilm(@RequestBody FilmDTO filmDTO) {
+		//String root = request.getServletContext().getRealPath("upload");
+		String root = context.getRealPath("/template/upload/");
 		System.out.println(root);
 		try {
 			
@@ -49,8 +53,8 @@ public class FilmAPI {
 	}
 	
 	@PutMapping("/api-film")
-	public FilmDTO updateFilm(@RequestBody FilmDTO updateFilm, HttpServletRequest request) {
-		String root = request.getServletContext().getRealPath("upload");
+	public FilmDTO updateFilm(@RequestBody FilmDTO updateFilm) {
+		String root = context.getRealPath("/template/upload/");
 		System.out.println(root);
 		try {
 			

@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.data.domain.Pageable;
 
-import com.qnu.dto.FilmDTO;
 import com.qnu.dto.UserDTO;
 
 public interface IUserService {

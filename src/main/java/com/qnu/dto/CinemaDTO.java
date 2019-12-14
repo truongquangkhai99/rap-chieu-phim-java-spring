@@ -10,5 +10,4 @@ public class CinemaDTO extends AbstractDTO<CinemaDTO>{
 	public void setName(String name) {
 		this.name = name;
 	}
-	
 }

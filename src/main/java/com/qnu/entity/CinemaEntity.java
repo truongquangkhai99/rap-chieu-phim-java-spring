@@ -15,6 +15,9 @@ public class CinemaEntity extends BaseEntity{
 	@Column(name = "name")
 	private String name;
 
+	@Column(name = "description", columnDefinition = "TEXT")
+	private String description;
+	
 	@OneToMany(mappedBy = "cinema")
 	private List<BillEntity> bills = new ArrayList<>();
 	
@@ -35,4 +38,21 @@ public class CinemaEntity extends BaseEntity{
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public List<ScheduleEntity> getSchedules() {
+		return schedules;
+	}
+
+	public void setSchedules(List<ScheduleEntity> schedules) {
+		this.schedules = schedules;
+	}
+	
 }

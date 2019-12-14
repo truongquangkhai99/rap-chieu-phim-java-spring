@@ -3,4 +3,3 @@
 *.classpath
 *.project
 /bin/
-/src/main/webapp/template/upload/thumbnail/

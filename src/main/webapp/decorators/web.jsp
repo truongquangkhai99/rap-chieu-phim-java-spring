@@ -45,6 +45,12 @@
 	.portfolio-item {
     	margin-bottom: 35px;
 	}
+	.card-img-top {
+    	filter: drop-shadow(2px 4px 6px blue);
+    	height: 300px;
+    	object-fit: contain;
+    	background: aliceblue;
+    }
   </style>
 </head>
 

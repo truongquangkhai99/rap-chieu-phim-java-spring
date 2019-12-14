@@ -31,7 +31,9 @@
         <li>Consectetur</li>
         <li>Adipiscing Elit</li>
       </ul>
-      <button type="button" id="btn" class="btn btn-primary">Đặt vé</button>
+      <a href="<c:url value='/schedule'/>">
+      	<button type="button" id="btn" class="btn btn-primary">Đặt vé</button>
+      </a>
     </div>
 
   </div>

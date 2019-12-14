@@ -5,13 +5,13 @@ import java.util.Map;
 
 import org.springframework.data.domain.Pageable;
 
-import com.qnu.dto.FilmDTO;
+import com.qnu.dto.CinemaDTO;
 
-public interface IFilmService {
+public interface ICinemaService {
 	Map<String, String> findAll();
-	List<FilmDTO> findAll(Pageable pageable);
+	List<CinemaDTO> findAll(Pageable pageable);
 	int getTotalItem();
-	FilmDTO findById(long id);
-	FilmDTO save(FilmDTO dto);
+	CinemaDTO findById(long id);
+	CinemaDTO save(CinemaDTO dto);
 	void delete(long[] ids);
 }

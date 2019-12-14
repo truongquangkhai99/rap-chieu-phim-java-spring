@@ -20,7 +20,7 @@
 					href="#about">Phim</a></li>
 				
 				<li class="nav-item"><a class="nav-link js-scroll-trigger"
-					href="#">Lịch chiếu phim</a></li>
+					href="<c:url value='/schedule'/>">Lịch chiếu phim</a></li>
 				
 				<li class="nav-item"><a class="nav-link js-scroll-trigger"
 					href="#services">Khuyến mãi</a></li>

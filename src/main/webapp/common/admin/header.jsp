@@ -4,7 +4,7 @@
 
     <a class="navbar-brand mr-1" href="<c:url value='/admin-home'/>">Trang Quản Trị</a>
 
-    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle">
       <i class="fas fa-bars"></i>
     </button>
 
