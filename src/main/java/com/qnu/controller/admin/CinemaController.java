@@ -14,9 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.qnu.dto.CinemaDTO;
-import com.qnu.dto.FilmDTO;
 import com.qnu.service.ICinemaService;
-import com.qnu.service.IFilmService;
 import com.qnu.util.MessageUtil;
 
 @Controller(value = "cinemaControllerOfAdmin")

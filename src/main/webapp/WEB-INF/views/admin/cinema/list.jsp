@@ -46,6 +46,9 @@
 									<tr>
 										<th><input type="checkbox" id="checkAll"></th>
 										<th scope="col">Tên rạp</th>
+										<th scope="col">Loại rạp</th>
+										<th scope="col">Tổng số ghế</th>
+										<th scope="col">Mô tả</th>
 										<th scope="col">Chỉnh sửa</th>
 									</tr>
 								</thead>
@@ -54,6 +57,9 @@
 										<tr>
 											<td><input type="checkbox" id="checkbox_${item.id}" value="${item.id}"></td>
 											<td>${item.name}</td>
+											<td>${item.typeOfCinema}</td>
+											<td>${item.totalSeats}</td>
+											<td>${item.description}</td>
 											<td>
 												<c:url var="updateCinemaURL" value="/admin-cinema-edit">
 													<c:param name="id" value="${item.id}"/>															

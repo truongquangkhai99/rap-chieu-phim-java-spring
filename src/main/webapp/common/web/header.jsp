@@ -17,7 +17,7 @@
 			<ul class="navbar-nav ml-auto my-2 my-lg-0">
 				
 				<li class="nav-item"><a class="nav-link js-scroll-trigger"
-					href="#about">Phim</a></li>
+					href="<c:url value='/list-film?page=1&limit=9'/>">Phim</a></li>
 				
 				<li class="nav-item"><a class="nav-link js-scroll-trigger"
 					href="<c:url value='/schedule'/>">Lịch chiếu phim</a></li>

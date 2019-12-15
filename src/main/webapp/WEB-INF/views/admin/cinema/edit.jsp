@@ -29,6 +29,22 @@
 							<label for="name">Tên Rạp</label>
 							<form:input path="name" cssClass="form-control" placeholder="Nhập tên rạp"/>
 						</div>
+						
+						<div class="form-group">
+							<label for="totalSeats">Tổng số ghế</label>
+							<form:input path="totalSeats" cssClass="form-control" placeholder="Nhập tổng số ghế"/>
+						</div>
+						
+						<div class="form-group">
+							<label for="typeOfCinema">Loại rạp</label>
+							<form:input path="typeOfCinema" cssClass="form-control" placeholder="Nhập Loại rạp"/>
+						</div>
+						
+						<fieldset class="form-group">
+							<label>Mô tả ngắn</label>
+							<form:textarea path="description" rows="4" cssClass="form-control" id="description"/>
+						</fieldset>
+						
 						<form:hidden path="id" id="cinemaId"/>
 						<fieldset class="form-group" style="margin: 0, auto;">
 							<c:if test="${not empty model.id}">

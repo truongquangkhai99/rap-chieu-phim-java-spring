@@ -1,4 +1,4 @@
-package com.qnu.api.admin;
+package com.qnu.api;
 
 import java.io.File;
 import java.io.FileOutputStream;

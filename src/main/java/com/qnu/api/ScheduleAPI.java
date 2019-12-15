@@ -1,4 +1,4 @@
-package com.qnu.api.admin;
+package com.qnu.api;
 
 import java.sql.Timestamp;
 import java.util.Calendar;

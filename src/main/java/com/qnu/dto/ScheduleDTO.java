@@ -21,6 +21,9 @@ public class ScheduleDTO extends AbstractDTO<ScheduleDTO>{
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
 	private Timestamp timeStart;
 	
+	private String filmName;
+	private String cinemaName;
+	
 	public Long getIdFilm() {
 		return idFilm;
 	}
@@ -38,5 +41,17 @@ public class ScheduleDTO extends AbstractDTO<ScheduleDTO>{
 	}
 	public void setTimeStart(Timestamp timeStart) {
 		this.timeStart = timeStart;
+	}
+	public String getCinemaName() {
+		return cinemaName;
+	}
+	public void setCinemaName(String cinemaName) {
+		this.cinemaName = cinemaName;
+	}
+	public String getFilmName() {
+		return filmName;
+	}
+	public void setFilmName(String filmName) {
+		this.filmName = filmName;
 	}
 }

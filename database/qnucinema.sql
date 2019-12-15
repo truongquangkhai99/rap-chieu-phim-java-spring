@@ -48,6 +48,7 @@ CREATE TABLE IF NOT EXISTS film (
 CREATE TABLE IF NOT EXISTS cinema(
   id bigint NOT NULL PRIMARY KEY auto_increment,
   name VARCHAR(255) NOT NULL,
+  description TEXT NULL,
   createddate TIMESTAMP NULL,
   modifieddate TIMESTAMP NULL,
   createdby VARCHAR(255) NULL,
@@ -95,12 +96,18 @@ CREATE TABLE IF NOT EXISTS post(
   modifiedby VARCHAR(255) NULL
 );
 
-insert into role(code,name) values('ADMIN','Quản trị viên');
-insert into role(code,name) values('USER','Khách hàng');
+insert into role(code,name) values('ADMIN','Quản Trị Viên');
+insert into role(code,name) values('USER','Khách Hàng');
 
-insert into user(username, password, fullname, status, roleid, email, phone) values("admin", "$2a$10$/RUbuT9KIqk6f8enaTQiLOXzhnUkiwEJRdtzdrMXXwU7dgnLKTCYG", "admin", 1, 1, "admin@gmail.com", "0123465978");
+insert into user(username, password, fullname, status, roleid, email, phone) values("admin", "$2a$10$/RUbuT9KIqk6f8enaTQiLOXzhnUkiwEJRdtzdrMXXwU7dgnLKTCYG", "Hoài Thu", 1, 1, "admin@gmail.com", "0123465978");
 insert into user(username, password, fullname, status, roleid, email, phone) values("nguyenvana", "$2a$10$/RUbuT9KIqk6f8enaTQiLOXzhnUkiwEJRdtzdrMXXwU7dgnLKTCYG", "Nguyễn Văn A", 1, 2, "nguyenvana@gmail.com", "1323465978");
-insert into user(username, password, fullname, status, roleid, email, phone) values("phanthanhhao", "$2a$10$/RUbuT9KIqk6f8enaTQiLOXzhnUkiwEJRdtzdrMXXwU7dgnLKTCYG", "Phan Thanh Hào", 1, 1, "phanvanb@gmail.com", "01234656241");
+insert into user(username, password, fullname, status, roleid, email, phone) values("phanthanhhao", "$2a$10$/RUbuT9KIqk6f8enaTQiLOXzhnUkiwEJRdtzdrMXXwU7dgnLKTCYG", "Phan Thanh Hạo", 1, 1, "phanvanb@gmail.com", "01234656241");
 insert into user(username, password, fullname, status, roleid, email, phone) values("tranvanbinh", "$2a$10$/RUbuT9KIqk6f8enaTQiLOXzhnUkiwEJRdtzdrMXXwU7dgnLKTCYG", "Trần Văn Bình", 1, 1, "tranthic@gmail.com", "012375424242");
 
-INSERT INTO `qnucinema`.`film` (`cast`, `description`, `director`, `genre`, `rated`, `release_date`, `running_time`, `thumbnail`, `title`, `trailer`) VALUES ('jonny trí nguyễn', 'phim hay', 'Dustin Nguyễn', 'Hành động', 'Cấm trẻ em dưới 15 tuổi', '10-10-2018', '1h45\'', 'abc.jpg', 'Dòng máu anh hùng', 'http://www.youtube.com');
+INSERT INTO `qnucinema`.`film` (`cast`, `description`, `director`, `genre`, `rated`, `release_date`, `running_time`, `thumbnail`, `title`, `trailer`) VALUES ('Johny Trí Nguyễn', 'phim hay', 'Dustin Nguyễn', 'Hành động, Cổ trang', 'Cấm trẻ em dưới 15 tuổi', '10-10-2018', '1h45\'', 'dong-mau-anh-hung.jpg', 'Dòng Máu Anh Hùng', 'http://www.youtube.com');
+INSERT INTO `qnucinema`.`film` (`cast`, `description`, `director`, `genre`, `rated`, `release_date`, `running_time`, `thumbnail`, `title`, `trailer`) VALUES ('Trường Giang, Mạc Văn Khoa', 'phim hay', 'Trường Giang', 'Hài nhảm nhí', 'Cấm trẻ em dưới 5 tuổi', '10-10-2018', '1h45\'', '30-chua-phai-la-tet.jpg', '30 Chưa Phải Là Tết', 'http://www.youtube.com');
+INSERT INTO `qnucinema`.`film` (`cast`, `description`, `director`, `genre`, `rated`, `release_date`, `running_time`, `thumbnail`, `title`, `trailer`) VALUES ('Jane Foster, Cris Hemwork', 'phim hay', 'Jane Foster', 'Viễn tưởng, Hành động', 'Cấm trẻ em dưới 10 tuổi', '10-10-2018', '1h45\'', 'thor-love-thunder.jpg', 'Thor: Love And Thunder', 'http://www.youtube.com');
+INSERT INTO `qnucinema`.`film` (`cast`, `description`, `director`, `genre`, `rated`, `release_date`, `running_time`, `thumbnail`, `title`, `trailer`) VALUES ('Johny Trí Nguyễn', 'phim hay', 'Dustin Nguyễn', 'Hành động, Cổ trang', 'Cấm trẻ em dưới 15 tuổi', '10-10-2018', '1h45\'', 'dong-mau-anh-hung.jpg', 'Dòng Máu Anh Hùng', 'http://www.youtube.com');
+INSERT INTO `qnucinema`.`film` (`cast`, `description`, `director`, `genre`, `rated`, `release_date`, `running_time`, `thumbnail`, `title`, `trailer`) VALUES ('Johny Trí Nguyễn', 'phim hay', 'Dustin Nguyễn', 'Hành động, Cổ trang', 'Cấm trẻ em dưới 15 tuổi', '10-10-2018', '1h45\'', 'dong-mau-anh-hung.jpg', 'Dòng Máu Anh Hùng', 'http://www.youtube.com');
+INSERT INTO `qnucinema`.`film` (`cast`, `description`, `director`, `genre`, `rated`, `release_date`, `running_time`, `thumbnail`, `title`, `trailer`) VALUES ('Johny Trí Nguyễn', 'phim hay', 'Dustin Nguyễn', 'Hành động, Cổ trang', 'Cấm trẻ em dưới 15 tuổi', '10-10-2018', '1h45\'', 'dong-mau-anh-hung.jpg', 'Dòng Máu Anh Hùng', 'http://www.youtube.com');
+INSERT INTO `qnucinema`.`film` (`cast`, `description`, `director`, `genre`, `rated`, `release_date`, `running_time`, `thumbnail`, `title`, `trailer`) VALUES ('Johny Trí Nguyễn', 'phim hay', 'Dustin Nguyễn', 'Hành động, Cổ trang', 'Cấm trẻ em dưới 15 tuổi', '10-10-2018', '1h45\'', 'dong-mau-anh-hung.jpg', 'Dòng Máu Anh Hùng', 'http://www.youtube.com');

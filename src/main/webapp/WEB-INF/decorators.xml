@@ -22,4 +22,8 @@
     <decorator name="forgotpassword" page="forgotpassword.jsp">
         <pattern>/forgotpassword</pattern>
     </decorator>
+    
+    <decorator name="book" page="book.jsp">
+        <pattern>/book</pattern>
+    </decorator>
 </decorators>

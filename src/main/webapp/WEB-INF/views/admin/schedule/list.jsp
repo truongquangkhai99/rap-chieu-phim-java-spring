@@ -55,8 +55,8 @@
 									<c:forEach var="item" items="${model.listResult}">
 										<tr>
 											<td><input type="checkbox" id="checkbox_${item.id}" value="${item.id}"></td>
-											<td>${item.idFilm}</td>
-											<td>${item.idCinema}</td>
+											<td>${item.filmName}</td>
+											<td>${item.cinemaName}</td>
 											<td>${item.timeStart}</td>
 											<td>
 												<c:url var="updateScheduleURL" value="/admin-schedule-edit">

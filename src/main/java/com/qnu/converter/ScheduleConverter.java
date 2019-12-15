@@ -16,6 +16,8 @@ public class ScheduleConverter {
 		result.setIdFilm(entity.getFilm().getId());
 		result.setIdCinema(entity.getCinema().getId());
 		result.setTimeStart((Timestamp)entity.getTimeStart());
+		result.setFilmName(entity.getFilm().getTitle());
+		result.setCinemaName(entity.getCinema().getName());
 		return result;
 	}
 	

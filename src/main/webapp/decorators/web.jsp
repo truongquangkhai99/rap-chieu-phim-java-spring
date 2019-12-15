@@ -6,10 +6,10 @@
 
 <head>
 
+  <!-- for-mobile-apps -->
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
 
   <title>Trang chủ</title>
 
@@ -61,7 +61,11 @@
 	<dec:body/>
 
  	<%@ include file="/common/web/footer.jsp" %>
-
+  
+  <!-- Booking JavaScript -->
+  <script src="<c:url value='/template/web/js/jquery.nicescroll.js'/>"></script>
+  <script src="<c:url value='/template/web/js/scripts.js'/>"></script>
+  
   <!-- Bootstrap core JavaScript -->
   <script src="<c:url value='/template/admin/vendor/vendor/bootstrap/js/bootstrap.min.js'/>"></script>
   <script src="<c:url value='/template/web/vendor/bootstrap/js/bootstrap.bundle.min.js'/>"></script>

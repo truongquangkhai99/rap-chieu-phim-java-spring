@@ -15,6 +15,12 @@ public class CinemaEntity extends BaseEntity{
 	@Column(name = "name")
 	private String name;
 
+	@Column(name = "total_seats")
+	private Long totalSeats;
+	
+	@Column(name = "type_of_cinema")
+	private String typeOfCinema;
+	
 	@Column(name = "description", columnDefinition = "TEXT")
 	private String description;
 	
@@ -53,6 +59,22 @@ public class CinemaEntity extends BaseEntity{
 
 	public void setSchedules(List<ScheduleEntity> schedules) {
 		this.schedules = schedules;
+	}
+
+	public Long getTotalSeats() {
+		return totalSeats;
+	}
+
+	public void setTotalSeats(Long totalSeats) {
+		this.totalSeats = totalSeats;
+	}
+
+	public String getTypeOfCinema() {
+		return typeOfCinema;
+	}
+
+	public void setTypeOfCinema(String typeOfCinema) {
+		this.typeOfCinema = typeOfCinema;
 	}
 	
 }
