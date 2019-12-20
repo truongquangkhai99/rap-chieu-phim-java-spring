@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
-<c:url var="editFilmURL" value="/admin-film-edit"/>
-<c:url var="filmAPI" value="/api-film"/>
-<c:url var="filmURL" value="/admin-film-list"/>
+<c:url var="editBillURL" value="/admin-bill-edit"/>
+<c:url var="billAPI" value="/api-bill"/>
+<c:url var="billURL" value="/admin-bill-list"/>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Phim</title>
+<title>Hóa đơn</title>
 
 </head>
 <body id="page-top">
@@ -25,8 +25,8 @@
 					<div class="col-lg-3"></div>
 					<div class="col-lg-6">
 						<div class="form-group">
-							<label for="title">Tên phim</label> 
-							<form:input path="title" cssClass="form-control" placeholder="Nhập tên phim"/>
+							<label for="title">Khách hàng</label> 
+							<form:input path="title" readonly cssClass="form-control" placeholder="Nhập tên phim"/>
 						</div>
 
 						<div class="form-group">

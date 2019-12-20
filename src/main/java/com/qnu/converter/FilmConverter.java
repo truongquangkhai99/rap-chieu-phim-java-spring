@@ -21,6 +21,7 @@ public class FilmConverter {
 		result.setDescription(entity.getDescription());
 		result.setReleaseDate(entity.getReleaseDate());
 		result.setRunningTime(entity.getRunningTime());
+		result.setLanguage(entity.getLanguage());
 		return result;
 	}
 	
@@ -36,6 +37,7 @@ public class FilmConverter {
 		result.setDescription(dto.getDescription());
 		result.setReleaseDate(dto.getReleaseDate());
 		result.setRunningTime(dto.getRunningTime());
+		result.setLanguage(dto.getLanguage());
 		return result;
 	}
 	
@@ -50,6 +52,7 @@ public class FilmConverter {
 		result.setDescription(dto.getDescription());
 		result.setReleaseDate(dto.getReleaseDate());
 		result.setRunningTime(dto.getRunningTime());
+		result.setLanguage(dto.getLanguage());
 		return result;
 	}
 }

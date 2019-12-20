@@ -1,6 +1,8 @@
 package com.qnu.service.impl;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +45,32 @@ public class ScheduleService implements IScheduleService {
 		}
 		return models;
 	}
-
+	
+	@Override
+	public List<ScheduleDTO> findAllByDate(Date date) {
+		List<ScheduleDTO> models = new ArrayList<>();
+		List<ScheduleEntity> entities = scheduleRepository.findAll();
+		Calendar calendar = Calendar.getInstance();
+		Calendar calendar2 = Calendar.getInstance();
+		
+		for (ScheduleEntity item : entities) {
+			
+			//Timestamp itemTime = new Timestamp(item.getTimeStart().getTime());
+			//Date itemDate = new Date(itemTime.getTime());
+			//calendar.setTime(itemDate);
+			calendar.setTime(item.getTimeStart());
+			calendar2.setTime(date);
+			
+			if (calendar.get(Calendar.DATE) == calendar2.get(Calendar.DATE) && 
+				calendar.get(Calendar.MONTH) == calendar2.get(Calendar.MONTH) &&
+				calendar.get(Calendar.YEAR) == calendar2.get(Calendar.YEAR)) {
+					ScheduleDTO scheduleDTO = scheduleConverter.toDto(item);
+					models.add(scheduleDTO);
+			}
+		}
+		return models;
+	}
+	
 	@Override
 	public int getTotalItem() {
 		return (int) scheduleRepository.count();

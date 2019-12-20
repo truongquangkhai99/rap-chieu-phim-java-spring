@@ -37,6 +37,17 @@ public class FilmService implements IFilmService {
 	}
 
 	@Override
+	public List<FilmDTO> findAlll() {
+		List<FilmDTO> models = new ArrayList<>();
+		List<FilmEntity> entities = filmRepository.findAll();
+		for (FilmEntity item : entities) {
+			FilmDTO filmDTO = filmConverter.toDto(item);
+			models.add(filmDTO);
+		}
+		return models;
+	}
+	
+	@Override
 	public int getTotalItem() {
 		return (int) filmRepository.count();
 	}

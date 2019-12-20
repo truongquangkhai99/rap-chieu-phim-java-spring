@@ -25,18 +25,8 @@ public class CinemaEntity extends BaseEntity{
 	private String description;
 	
 	@OneToMany(mappedBy = "cinema")
-	private List<BillEntity> bills = new ArrayList<>();
-	
-	@OneToMany(mappedBy = "cinema")
 	private List<ScheduleEntity> schedules = new ArrayList<>();
-	public List<BillEntity> getBills() {
-		return bills;
-	}
-
-	public void setBills(List<BillEntity> bills) {
-		this.bills = bills;
-	}
-
+	
 	public String getName() {
 		return name;
 	}

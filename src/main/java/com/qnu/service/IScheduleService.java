@@ -1,5 +1,6 @@
 package com.qnu.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.domain.Pageable;
@@ -13,4 +14,5 @@ public interface IScheduleService {
 	ScheduleDTO findById(long id);
 	ScheduleDTO save(ScheduleDTO dto);
 	void delete(long[] ids);
+	List<ScheduleDTO> findAllByDate(Date time);
 }

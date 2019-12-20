@@ -42,19 +42,11 @@ public class FilmEntity extends BaseEntity{
 	@Column(name = "trailer")
 	private String trailer;
 	
-	@OneToMany(mappedBy = "film")
-	private List<BillEntity> bills = new ArrayList<>();
-
+	@Column(name = "language")
+	private String language;
+	
 	@OneToMany(mappedBy = "film")
 	private List<ScheduleEntity> schedules = new ArrayList<>();
-	
-	public List<BillEntity> getBills() {
-		return bills;
-	}
-
-	public void setBills(List<BillEntity> bills) {
-		this.bills = bills;
-	}
 
 	public String getTitle() {
 		return title;
@@ -134,5 +126,21 @@ public class FilmEntity extends BaseEntity{
 
 	public void setTrailer(String trailer) {
 		this.trailer = trailer;
+	}
+
+	public String getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+
+	public List<ScheduleEntity> getSchedules() {
+		return schedules;
+	}
+
+	public void setSchedules(List<ScheduleEntity> schedules) {
+		this.schedules = schedules;
 	}
 }

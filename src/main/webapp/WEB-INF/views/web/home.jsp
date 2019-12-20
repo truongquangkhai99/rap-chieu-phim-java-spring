@@ -2,6 +2,11 @@
 <%@include file="/common/taglib.jsp"%>
 <!DOCTYPE html>
 
+<jsp:useBean id="now" class="java.util.Date" />
+<fmt:formatDate var="y" value="${now}" pattern="yyyy" />
+<fmt:formatDate var="m" value="${now}" pattern="MM" />
+<fmt:formatDate var="d" value="${now}" pattern="dd" />
+
 <html>
 
 <head> <title>Trang chủ</title> </head>
@@ -21,7 +26,11 @@
 					<p class="text-white-75 font-weight-light mb-5">Qnu Cinema là website đặt quản lý rạp 
 						chiếu phim đơn giản sử dụng Spring MVC + Spring Security + 
 						Spring Data JPA (Hibernate implementation)</p>
-					<a class="btn btn-primary btn-xl js-scroll-trigger" href="<c:url value='/schedule'/>">Xem lịch chiếu phim</a>
+						
+					<c:url var="dateParam" value='/schedule'>
+  						<c:param name="date" value="${y}-${m}-${d}"/>
+  					</c:url>
+					<a class="btn btn-primary btn-xl js-scroll-trigger" href="${dateParam}">Xem lịch chiếu phim</a>
 				</div>
 			</div>
 		</div>

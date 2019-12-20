@@ -1,0 +1,11 @@
+ - Đăng nhập, phân quyền
+ - Đăng ký
+ - Phần admin:
+	+ Thêm sửa xóa phim
+	+ Thêm sửa xóa rạp
+	+ Thêm sửa xóa lịch chiếu
+ - Phần người dùng:
+	+ Hiển thị dữ liệu lên trang danh sách phim
+	+ Hiển thị dữ liệu lên trang chi tiết phim
+	+ Hiển thị dữ liệu lên trang lịch chiếu phim
+	+ Đặt vé xem phim

@@ -16,12 +16,8 @@ public class BillEntity extends BaseEntity{
 	private UserEntity user;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idfilm")
-	private FilmEntity film;
-	
-	@ManyToOne(fetch = FetchType.LAZY) 
-	@JoinColumn(name = "idcinema")
-	private CinemaEntity cinema;
+	@JoinColumn(name = "idschedule")
+	private ScheduleEntity schedules;
 	
 	@Column(name = "seat")
 	private String seat;
@@ -29,28 +25,23 @@ public class BillEntity extends BaseEntity{
 	@Column(name = "price")
 	private Long price;
 
+	@Column(name = "status")
+	private String status;
+	
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	public UserEntity getUser() {
 		return user;
 	}
 
 	public void setUser(UserEntity user) {
 		this.user = user;
-	}
-
-	public FilmEntity getFilm() {
-		return film;
-	}
-
-	public void setFilm(FilmEntity film) {
-		this.film = film;
-	}
-
-	public CinemaEntity getCinema() {
-		return cinema;
-	}
-
-	public void setCinema(CinemaEntity cinema) {
-		this.cinema = cinema;
 	}
 
 	public String getSeat() {
@@ -68,4 +59,14 @@ public class BillEntity extends BaseEntity{
 	public void setPrice(Long price) {
 		this.price = price;
 	}
+
+	public ScheduleEntity getSchedules() {
+		return schedules;
+	}
+
+	public void setSchedules(ScheduleEntity schedules) {
+		this.schedules = schedules;
+	}
+	
+	
 }

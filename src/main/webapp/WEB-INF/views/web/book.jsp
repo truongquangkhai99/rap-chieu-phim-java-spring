@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp" %>
+<c:url var="billAPI" value="/api-bill"/>
+<c:url var="billURL" value="/book"/>
+<%@ page import="com.qnu.util.SecurityUtils"%>
 
 <!DOCTYPE html>
 <html>
@@ -13,33 +16,40 @@
 		<h2>Sơ Đồ Ghế Ngồi</h2>
 		<div class="demo">
 			<div id="seat-map">
-				<div class="front">MÀN HÌNH</div>					
+				<div class="front">MÀN HÌNH</div>
 			</div>
 			<div class="booking-details">
-				<ul class="book-left">
-					<li>Phim </li>
-					<li>Thời gian </li>
-					<li>Số vé</li>
-					<li>Tổng tiền</li>
-					<li>Chỗ ngồi</li>
-				</ul>
-				<ul class="book-right">
-					<li>: Gingerclown</li>
-					<li>: April 3, 21:00</li>
-					<li>: <span id="counter">0</span></li>
-					<li>: <b><i>$</i><span id="total">0</span></b></li>
+				<ul style="font-size: large;">
+					<li class="customlistli"><b class="customlistb">Phim: </b> ${filmDTO.title}</li>
+					<c:set var="timeParts" value="${fn:split(scheduleDTO.timeStart, ':')}" />
+					<li class="customlistli"><b class="customlistb">Thời gian: </b> 
+						${timeParts[0]}:${timeParts[1]}
+					</li>
+					<li class="customlistli"><b class="customlistb">Số vé: </b> <span id="counter">0</span></li>
+					<li class="customlistli"><b class="customlistb">Tổng tiền: </b> <b><span id="total">0</span><i>đ</i></b></li>
+					<li class="customlistli"><b class="customlistb">Chỗ ngồi: </b></li>
 				</ul>
 				<div class="clear"></div>
-				<ul id="selected-seats" class="scrollbar scrollbar1"></ul>
-			
-				<button class="checkout-button">Đặt Vé</button>	
+				
+				<form:form method="POST" role="form" id="formSubmit" modelAttribute="bills">
+					<ul id="selected-seats" class="scrollbar scrollbar1"></ul>
+					<button class="checkout-button" id="btnAddBill">Đặt Vé Và Thanh Toán</button>
+				</form:form>
+				
 				<div id="legend"></div>
 			</div>
 			<div style="clear:both"></div>
+			
+			<c:if test="${not empty message}">
+				<div class="alert alert-${alert}">
+			  		${message}
+				</div>
+			</c:if>
 	    </div>
 
 			<script type="text/javascript">
-				var price = 10; //price
+				var price = 55000; //giá tiền
+				
 				$(document).ready(function() {
 					var $cart = $('#selected-seats'), //Khu vực ghế ngồi
 					$counter = $('#counter'), //Số ghế được chọn
@@ -64,7 +74,7 @@
 								return column;
 							}
 						},
-						legend : { //Definition legend
+						legend : { //Khu vực chú thích
 							node : $('#legend'),
 							items : [
 								[ 'a', 'available',   'Còn Trống' ],
@@ -73,8 +83,8 @@
 							]					
 						},
 						click: function () {
-							if (this.status() == 'available') { //optional seat
-								$('<li>Row'+(this.settings.row+1)+' Seat'+this.settings.label+'</li>')
+							if (this.status() == 'available') {
+								$('<li>Hàng '+(this.settings.row+1)+' Ghế '+this.settings.label+'</li>')
 									.attr('id', 'cart-item-'+this.settings.id)
 									.data('seatId', this.settings.id)
 									.appendTo($cart);
@@ -83,35 +93,60 @@
 								$total.text(recalculateTotal(sc)+price);
 											
 								return 'selected';
-							} else if (this.status() == 'selected') { //Checked
-									//Update Number
+							} else if (this.status() == 'selected') { //Được chọn
+									//Cập nhật tổng số ghế đã chọn
 									$counter.text(sc.find('selected').length-1);
-									//update totalnum
+									//Cập nhật tổng số tiền
 									$total.text(recalculateTotal(sc)-price);
-										
-									//Delete reservation
+									//Bỏ chọn
 									$('#cart-item-'+this.settings.id).remove();
-									//optional
+
 									return 'available';
-							} else if (this.status() == 'unavailable') { //sold
+							} else if (this.status() == 'unavailable') { //đã bán
 								return 'unavailable';
 							} else {
 								return this.style();
 							}
 						}
 					});
-					//sold seat
-					sc.get(['1_2', '4_4','4_5','6_6','6_7','8_5','8_6','8_7','8_8', '10_1', '10_2']).status('unavailable');
-						
+					//Ghế đã bán
+					sc.get([,'${seats}',]).status('unavailable');
 				});
-				//sum total money
+				//Tổng số tiền
 				function recalculateTotal(sc) {
 					var total = 0;
 					sc.find('selected').each(function () {
 						total += price;
 					});
-							
 					return total;
+				}
+				
+				
+				$('#btnAddBill').click(function(e) {
+					e.preventDefault();
+					var data = {};
+					data["idCustomer"] = "";
+					data["idSchedule"] = ${scheduleDTO.id};
+					data["seat"] = "";
+					data["price"] = recalculateTotal(sc);
+					data["status"] = "Chưa lấy vé";
+					addBill(data);
+				});
+				
+				function addBill(data) {
+					$.ajax({
+			            url: '${billAPI}',
+			            type: 'POST',
+			            contentType: 'application/json',
+			            data: JSON.stringify(data),
+			            dataType: 'json',
+			            success: function (result) {
+			            	window.location.href = "${billURL}&message=buy_success";
+			            },
+			            error: function (error) {
+			            	window.location.href = "${billURL}&message=error_system";
+			            }
+			        });
 				}
 			</script>
 	</div>

@@ -22,6 +22,9 @@ public class MessageUtil {
 		} else if (message.equals("error_system")) {
 			result.put("message", "Lỗi hệ thống!");
 			result.put("alert", "danger");
+		} else if (message.equals("buy_success")) {
+			result.put("message", "Đặt vé thành công!\nLưu lại mã giao dịch để nhận vé tại quầy. Mã giao dịch: ");
+			result.put("alert", "success");
 		}
 		return result;
 	}

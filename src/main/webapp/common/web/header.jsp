@@ -1,6 +1,12 @@
+<%@include file="/common/taglib.jsp"%>
 <%@ page import="com.qnu.util.SecurityUtils" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<jsp:useBean id="now" class="java.util.Date" />
+<fmt:formatDate var="y" value="${now}" pattern="yyyy" />
+<fmt:formatDate var="m" value="${now}" pattern="MM" />
+<fmt:formatDate var="d" value="${now}" pattern="dd" />
+
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3"
 	id="mainNav">
@@ -18,9 +24,12 @@
 				
 				<li class="nav-item"><a class="nav-link js-scroll-trigger"
 					href="<c:url value='/list-film?page=1&limit=9'/>">Phim</a></li>
-				
+					
+				<c:url var="dateParam" value='/schedule'>
+  					<c:param name="date" value="${y}-${m}-${d}"/>
+  				</c:url>
 				<li class="nav-item"><a class="nav-link js-scroll-trigger"
-					href="<c:url value='/schedule'/>">Lịch chiếu phim</a></li>
+					href="${dateParam}">Lịch chiếu phim</a></li>
 				
 				<li class="nav-item"><a class="nav-link js-scroll-trigger"
 					href="#services">Khuyến mãi</a></li>

@@ -42,6 +42,13 @@
 	.portfolio-item {
     	margin-bottom: 35px;
 	}
+	.customlistb {
+		font-weight: 600;
+		color: #D88A04;
+	}
+	.customlistli {
+		margin-bottom: 5px;
+	}
   </style>
 </head>
 

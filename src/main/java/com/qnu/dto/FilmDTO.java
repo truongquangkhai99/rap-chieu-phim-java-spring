@@ -12,6 +12,7 @@ public class FilmDTO extends AbstractDTO<FilmDTO>{
 	private String runningTime;
 	private String description;
 	private String trailer;
+	private String language;
 	
 	public String getTitle() {
 		return title;
@@ -78,5 +79,11 @@ public class FilmDTO extends AbstractDTO<FilmDTO>{
 	}
 	public void setThumbnailBase64(String thumbnailBase64) {
 		this.thumbnailBase64 = thumbnailBase64;
+	}
+	public String getLanguage() {
+		return language;
+	}
+	public void setLanguage(String language) {
+		this.language = language;
 	}
 }

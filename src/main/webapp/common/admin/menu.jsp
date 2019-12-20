@@ -19,6 +19,6 @@
 			<h6 class="dropdown-header">Tài khoản quản trị:</h6>
 			<a class="dropdown-item" href="#">Đổi mật khẩu</a>
 		</div></li>
-	<li class="nav-item"><a class="nav-link" href="#"> <i
+	<li class="nav-item"><a class="nav-link" href="<c:url value='/admin-bill-list?page=1&limit=8'/>"> <i
 			class="fas fa-fw fa-table"></i> <span>Danh sách hóa đơn</span></a></li>
 </ul>
