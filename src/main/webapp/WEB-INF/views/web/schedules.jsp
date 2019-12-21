@@ -82,7 +82,7 @@
 		    		<c:if test="${item.id eq schedule.idFilm}">
 		    			<c:url var="booking" value='/login'/>
 		    			<security:authorize access="isAuthenticated()">
-				    		<c:url var="booking" value='/book'>
+				    		<c:url var="booking" value='/bill'>
 					  			<c:param name="id" value="${schedule.id}"/>
 					  		</c:url>
 					 	</security:authorize>

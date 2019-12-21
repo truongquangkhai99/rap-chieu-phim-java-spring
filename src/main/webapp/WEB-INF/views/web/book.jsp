@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp" %>
 <c:url var="billAPI" value="/api-bill"/>
-<c:url var="billURL" value="/book"/>
-<%@ page import="com.qnu.util.SecurityUtils"%>
+<c:url var="bookResult" value="/bill-result"/>
 
 <!DOCTYPE html>
 <html>
@@ -26,7 +25,7 @@
 						${timeParts[0]}:${timeParts[1]}
 					</li>
 					<li class="customlistli"><b class="customlistb">Số vé: </b> <span id="counter">0</span></li>
-					<li class="customlistli"><b class="customlistb">Tổng tiền: </b> <b><span id="total">0</span><i>đ</i></b></li>
+					<li class="customlistli"><b class="customlistb">Tổng tiền: </b> <b><span id="total">0</span><i> đ</i></b></li>
 					<li class="customlistli"><b class="customlistb">Chỗ ngồi: </b></li>
 				</ul>
 				<div class="clear"></div>
@@ -42,7 +41,7 @@
 			
 			<c:if test="${not empty message}">
 				<div class="alert alert-${alert}">
-			  		${message}
+			  		${message} ${message}
 				</div>
 			</c:if>
 	    </div>
@@ -110,7 +109,9 @@
 						}
 					});
 					//Ghế đã bán
-					sc.get([,'${seats}',]).status('unavailable');
+					var seat = ${seats};
+					
+					sc.get(seat).status('unavailable');
 				});
 				//Tổng số tiền
 				function recalculateTotal(sc) {
@@ -124,11 +125,20 @@
 				
 				$('#btnAddBill').click(function(e) {
 					e.preventDefault();
+					
+					// lấy ra ghế đã chọn
+					var seat = "";
+				    $('#selected-seats li').each(function(){
+				    	var string = ($(this).attr('id')).split("-")[2];
+				    	seat = seat + string + ",";
+				    });
+				    seat = seat.substring(0, seat.length - 1);		
+					
 					var data = {};
-					data["idCustomer"] = "";
+					data["idCustomer"] = ${id};
 					data["idSchedule"] = ${scheduleDTO.id};
-					data["seat"] = "";
-					data["price"] = recalculateTotal(sc);
+					data["seat"] = seat;
+					data["price"] = $('#total').text().split(" ")[0];
 					data["status"] = "Chưa lấy vé";
 					addBill(data);
 				});
@@ -141,10 +151,10 @@
 			            data: JSON.stringify(data),
 			            dataType: 'json',
 			            success: function (result) {
-			            	window.location.href = "${billURL}&message=buy_success";
+			            	window.location.href = "${bookResult}?id="+result.id+"&message=buy_success";
 			            },
 			            error: function (error) {
-			            	window.location.href = "${billURL}&message=error_system";
+			            	window.location.href = "${bookResult}?id="+result.id+"&message=error_system";
 			            }
 			        });
 				}

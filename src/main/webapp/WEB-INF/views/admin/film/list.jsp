@@ -80,8 +80,8 @@
 								</tbody>
 							</table>
 							<ul class="pagination" id="pagination"></ul>
-							<input type="hidden" value="" id="page" name="page" /> <input
-								type="hidden" value="" id="limit" name="limit" />
+							<input type="hidden" id="page" name="page" />
+							<input type="hidden" id="limit" name="limit" />
 						</div>
 					</div>
 				</div>

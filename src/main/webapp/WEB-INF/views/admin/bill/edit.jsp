@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
-<c:url var="editBillURL" value="/admin-bill-edit"/>
 <c:url var="billAPI" value="/api-bill"/>
 <c:url var="billURL" value="/admin-bill-list"/>
 
@@ -25,71 +24,43 @@
 					<div class="col-lg-3"></div>
 					<div class="col-lg-6">
 						<div class="form-group">
-							<label for="title">Khách hàng</label> 
-							<form:input path="title" readonly cssClass="form-control" placeholder="Nhập tên phim"/>
-						</div>
-
-						<div class="form-group">
-							<label for="thumbnail">Poster</label> 
-						    <input name="thumbnail" id="thumbnail" type="file" class="form-control"/>
+							<label for="id">Mã giao dịch</label> 
+							<form:input path="id" cssClass="form-control" readonly="true"/>
 						</div>
 						
 						<div class="form-group">
-							<label for="cast">Diễn viên</label>
-							<form:input path="cast" cssClass="form-control" placeholder="Nhập diễn viên"/>
-						</div>
-
-						<div class="form-group">
-							<label for="director">Đạo diễn</label>
-							<form:input path="director" cssClass="form-control" placeholder="Nhập đạo diễn"/>
-						</div>
-
-						<div class="form-group">
-							<label for="genre">Thể loại</label>
-							<form:input path="genre" cssClass="form-control" placeholder="Nhập thể loại"/>	
-						</div>
-
-						<div class="form-group">
-							<label for="rated">Giới hạn tuổi</label>
-							<form:input path="rated" cssClass="form-control" placeholder="Cấm khán giả dưới..."/>
-						</div>
-
-						<div class="form-group">
-							<label for="runningTime">Độ dài</label>
-							<form:input path="runningTime" cssClass="form-control" placeholder="Độ dài của phim"/>
-						</div>
-
-						<div class="form-group">
-							<label for="trailer">Trailer</label>
-							<form:input path="trailer" cssClass="form-control" placeholder="Link trailer..."/>
-						</div>
-
-						<div class="form-group">
-							<label for="releaseDate">Ngày ra mắt</label>
-							<form:input type="date" path="releaseDate" cssClass="form-control" placeholder="Ngày ra mắt..."/>
+							<label for="customerName">Khách hàng</label> 
+							<form:input path="customerName" cssClass="form-control" readonly="true"/>
 						</div>
 						
 						<div class="form-group">
-							<label for="language">Ngôn ngữ</label>
-							<form:input path="language" cssClass="form-control" placeholder="Ngôn ngữ..."/>
+							<label for="filmName">Phim</label>
+							<form:input path="filmName" cssClass="form-control" readonly="true"/>
 						</div>
-						
-						<fieldset class="form-group">
-							<label>Mô tả ngắn</label>
-							<form:textarea path="description" rows="4" cssClass="form-control" id="description"/>
-						</fieldset>
-						<form:hidden path="id" id="filmId"/>
+
+						<div class="form-group">
+							<label for="timeStart">Thời gian chiếu</label>
+							<form:input path="timeStart" cssClass="form-control" readonly="true"/>
+						</div>
+
+						<div class="form-group">
+							<label for="seat">Ghế ngồi</label>
+							<form:input path="seat" cssClass="form-control" readonly="true"/>	
+						</div>
+
+						<div class="form-group">
+							<label for="price">Tổng tiền</label>
+							<form:input path="price" cssClass="form-control" readonly="true"/>
+						</div>
+
+						<div class="form-group">
+							<label for="status">Trạng thái đơn hàng</label>
+							<form:input path="status" cssClass="form-control"/>
+						</div>
+
 						<fieldset class="form-group" style="margin: 0, auto;">
-							<c:if test="${not empty model.id}">
-								<button type="button" id="btnAddOrUpdateFilm"
-									class="btn btn-primary">Cập nhật</button>
-							</c:if>
-							
-							<c:if test="${empty model.id}">
-							<button type="button" id="btnAddOrUpdateFilm"
-								class="btn btn-primary">Thêm mới</button>
-							</c:if>
-							<a href="<c:url value='/admin-film-list?page=1&limit=8'/>">
+							<button type="button" id="btnUpdateBill" class="btn btn-primary">Cập nhật</button>
+							<a href="<c:url value='/admin-bill-list?page=1&limit=8'/>">
 								<button type="button" class="btn btn-secondary">Hủy</button>
 							</a>
 						</fieldset>
@@ -100,63 +71,30 @@
 		</div>
 	</div>
 	<script> 
-		$('#btnAddOrUpdateFilm').click(function(e) {
+		$('#btnUpdateBill').click(function(e) {
 			e.preventDefault();
 			var data = {};
 			var formData = $('#formSubmit').serializeArray();
 			$.each(formData, function(i, v) {
 				data["" + v.name + ""] = v.value;
 			});
-			
-			var files = $("#thumbnail")[0].files[0];
-			data["thumbnail"] = files.name;
-		    if (files != undefined) {
-	            var reader = new FileReader();
-	            reader.onload = function(e) {
-	                data["thumbnailBase64"] = (e.target.result).split(",")[1];
-	                
-	             	// nếu tồn tại id trong form thì gọi update ngược lại thì gọi add
-	                var id = $('#filmId').val();
-	    			if (id == "") {
-	    				addFilm(data);
-	    			} else {
-	    				updateFilm(data);
-	    			}
-	            };
-	            reader.readAsDataURL(files);
-			}
+			updateBill(data);
 		});
 		
-		function addFilm(data) {
-			$.ajax({
-	            url: '${filmAPI}',
-	            type: 'POST',
-	            contentType: 'application/json',
-	            data: JSON.stringify(data),
-	            dataType: 'json',
-	            success: function (result) {
-	            	window.location.href = "${filmURL}?page=1&limit=8&message=insert_success";
-	            },
-	            error: function (error) {
-	            	window.location.href = "${filmURL}?page=1&limit=8&message=error_system";
-	            }
-	        });
-		}
-		
-		function updateFilm(data) {
+		function updateBill(data) {
 			// ajax là một kỹ thuật để làm việc với RESTFUL(JSON) API mà không cần quan tâm 
 			// đến phần front-end, có nhiệm vụ chuyển đổi data thành 1 định dạng chung là JSON
 			$.ajax({
-	            url: '${filmAPI}',  // Dẫn đến API sửa phim
+	            url: '${billAPI}',  // Dẫn đến API sửa phim
 	            type: 'PUT', 		// Cho biết hàm API nào thực hiện "PUT là sửa"
 	            contentType: 'application/json', // Dữ liệu gửi từ client về server là json
 	            data: JSON.stringify(data), 	// chuyển đổi data nhận được thành JSON
 	            dataType: 'json',				// định nghĩa kiểu trả về cho client là json
 	            success: function (result) {
-	            	window.location.href = "${filmURL}?page=1&limit=8&message=update_success";
+	            	window.location.href = "${billURL}?page=1&limit=8&message=update_success";
 	            },
 	            error: function (error) {
-	            	window.location.href = "${filmURL}?page=1&limit=8&message=error_system";
+	            	window.location.href = "${billURL}?page=1&limit=8&message=error_system";
 	            }
 	        });
 		}

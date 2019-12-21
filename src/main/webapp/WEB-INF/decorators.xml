@@ -24,6 +24,6 @@
     </decorator>
     
     <decorator name="book" page="book.jsp">
-        <pattern>/book</pattern>
+        <pattern>/bill*</pattern>
     </decorator>
 </decorators>

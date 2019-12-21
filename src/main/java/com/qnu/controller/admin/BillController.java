@@ -15,19 +15,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.qnu.dto.BillDTO;
 import com.qnu.service.IBillService;
-import com.qnu.service.IFilmService;
-import com.qnu.service.IScheduleService;
 import com.qnu.util.MessageUtil;
 
-@Controller(value = "bookControllerOfAdmin")
-public class BookController {
+@Controller(value = "billControllerOfAdmin")
+public class BillController {
 
-	@Autowired
-	private IFilmService filmService;
-	
-	@Autowired 
-	private IScheduleService scheduleService;
-	
 	@Autowired
 	private IBillService billService;
 	
@@ -46,6 +38,25 @@ public class BookController {
 		model.setListResult(billService.findAll(pageable));
 		model.setTotalItem(billService.getTotalItem());
 		model.setTotalPage((int) Math.ceil((double) model.getTotalItem() / model.getLimit()));
+		
+		if (request.getParameter("message") != null) {
+			Map<String, String> message = messageUtil.getMessage(request.getParameter("message"));
+			mav.addObject("message", message.get("message"));
+			mav.addObject("alert", message.get("alert"));
+		}
+		
+		mav.addObject("model", model);
+		return mav;
+	}
+	
+	@RequestMapping(value = "/admin-bill-edit", method = RequestMethod.GET)
+	public ModelAndView editBill(@RequestParam(value = "id", required = false) Long id, HttpServletRequest request) {
+		
+		ModelAndView mav = new ModelAndView("admin/bill/edit");
+		BillDTO model = new BillDTO();
+		if (id != null) {
+			model = billService.findById(id);
+		}
 		
 		if (request.getParameter("message") != null) {
 			Map<String, String> message = messageUtil.getMessage(request.getParameter("message"));

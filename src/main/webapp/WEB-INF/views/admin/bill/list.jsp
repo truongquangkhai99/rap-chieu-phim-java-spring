@@ -24,12 +24,6 @@
 						<i class="fas fa-table"></i> Danh sách hóa đơn
 						<div class="dt-buttons btn-overlap btn-group">
 							
-							<c:url var="createBillURL" value="/admin-bill-edit" />
-							<a flag="info"
-								class="dt-button buttons-colvis btn btn-white btn-primary btn-bold"
-								data-toggle="tooltip" title='Thêm hóa đơn' href='${createBillURL}'>
-								<span><i class="fa fa-plus-circle bigger-110 purple"></i>   </span>
-							</a>
 						</div>
 					</div>
 
@@ -38,7 +32,6 @@
 							<table class="table table-striped">
 								<thead>
 									<tr>
-										<th><input type="checkbox" id="checkAll"></th>
 										<th scope="col">Mã hóa đơn</th>
 										<th scope="col">Khách hàng</th>
 										<th scope="col">Phim</th>
@@ -47,14 +40,20 @@
 										<th scope="col">Ghế</th>
 										<th scope="col">Tổng tiền</th>
 										<th scope="col">Trạng thái</th>
+										<td scope="col">Chỉnh sửa</td>
 									</tr>
 								</thead>
 								<tbody>
 									<c:forEach var="item" items="${model.listResult}">
 										<tr>
-											<td><input type="checkbox" id="checkbox_${item.id}" value="${item.id}"></td>
 											<td>${item.id}</td>
-											<td>${item.idCustomer}</td>
+											<td>${item.customerName}</td>
+											<td>${item.filmName}</td>
+											<td>${item.cinemaName}</td>
+											<td>${item.timeStart}</td>
+											<td>${item.seat}</td>
+											<td>${item.price}</td>
+											<td>${item.status}</td>
 											<td>
 												<c:url var="updateBillURL" value="/admin-bill-edit">
 													<c:param name="id" value="${item.id}"/>															

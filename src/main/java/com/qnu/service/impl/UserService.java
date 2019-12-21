@@ -33,17 +33,17 @@ public class UserService implements IUserService{
 	private RoleRepository roleRepository;
 	
 	@Override
+	public UserDTO findById(long id) {
+		UserEntity entity = userRepository.findOne(id);
+		return userConverter.toDto(entity);
+	}
+	
+	@Override
 	public List<UserDTO> findAll(Pageable pageable) {
 		List<UserDTO> models = new ArrayList<>();
 		List<UserEntity> entities = userRepository.findAll(pageable).getContent();
 		for(UserEntity item : entities) {
-			UserDTO userDTO = new UserDTO();
-			userDTO.setEmail(item.getEmail());
-			userDTO.setFullName(item.getFullName());
-			userDTO.setPhone(item.getPhone());
-			userDTO.setStatus(item.getStatus());
-			userDTO.setUserName(item.getUserName());
-			userDTO.setRoleName(item.getRole().getName());
+			UserDTO userDTO = userConverter.toDto(item);
 			models.add(userDTO);
 		}
 		return models;
@@ -64,6 +64,17 @@ public class UserService implements IUserService{
 		userEntity.setStatus(1);
 		userEntity.setRole(roleEntity);
 		return userConverter.toDto(userRepository.save(userEntity));
+	}
+
+	@Override
+	public Long findUserByUserName(String userName) {
+		List<UserEntity> lsDTO = userRepository.findAll();
+		for(UserEntity itemEntity : lsDTO) {
+			if (itemEntity.getUserName().equals(userName)) {
+				return itemEntity.getId();
+			}
+		}
+		return null;
 	}
 
 }

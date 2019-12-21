@@ -10,4 +10,6 @@ public interface IUserService {
 	List<UserDTO> findAll(Pageable pageable);
 	int getTotalItem();
 	UserDTO save(UserDTO dto);
+	Long findUserByUserName(String userName);
+	UserDTO findById(long id);
 }
