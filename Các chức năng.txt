@@ -1,11 +1,17 @@
- - Đăng nhập, phân quyền
- - Đăng ký
+ - (Thu) Cơ sở dữ liệu 			
+ - (Thu) Đăng nhập, phân quyền 
+ - (?) Đăng ký
  - Phần admin:
-	+ Thêm sửa xóa phim
-	+ Thêm sửa xóa rạp
-	+ Thêm sửa xóa lịch chiếu
+	+ (Tường) Quản lý phim 
+	+ (Tường) Quản lý rạp 
+	+ (?) Quản lý lịch chiếu
  - Phần người dùng:
-	+ Hiển thị dữ liệu lên trang danh sách phim
-	+ Hiển thị dữ liệu lên trang chi tiết phim
-	+ Hiển thị dữ liệu lên trang lịch chiếu phim
-	+ Đặt vé xem phim
+	+ (?) Hiển thị dữ liệu lên trang danh sách phim
+	+ (Thu) Hiển thị dữ liệu lên trang chi tiết phim
+	+ (Thu) Hiển thị dữ liệu lên trang lịch chiếu phim 
+	+ (Thu) Đặt vé xem phim 
+	+ (?) Hiển thị danh sách hóa đơn
+	 
+Thu: 5
+Tường: 3
+Trà: 3

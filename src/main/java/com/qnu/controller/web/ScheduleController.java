@@ -4,7 +4,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -42,13 +44,13 @@ public class ScheduleController {
 		}
 		
 		for (int i = 0; i < lsFilm.size(); i++) {
-			for (int j = i + 1; j < lsFilm.size() - 1; j++) {
+			for (int j = i + 1; j < lsFilm.size(); j++) {
 				if (lsFilm.get(i).getId() == lsFilm.get(j).getId()) {
 					lsFilm.remove(j);
 				}
 			}
 		}
-        
+		
         mav.addObject("lsFilm", lsFilm);
 		mav.addObject("lsSchedule", lsSchedule);
 		return mav;
