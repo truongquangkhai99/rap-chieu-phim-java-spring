@@ -66,5 +66,4 @@ public class CinemaEntity extends BaseEntity{
 	public void setTypeOfCinema(String typeOfCinema) {
 		this.typeOfCinema = typeOfCinema;
 	}
-	
 }

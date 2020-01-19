@@ -50,9 +50,16 @@ public class JPAConfig {
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/qnucinema");
-		dataSource.setUsername("root");
-		dataSource.setPassword("123456");
+		
+		//dataSource.setUrl("jdbc:mysql://localhost:3306/qnucinema");
+		//dataSource.setUsername("root");
+		//dataSource.setPassword("123456");
+		
+		
+		//Kết nối vs csdl mysql trên AWS
+		dataSource.setUrl("jdbc:mysql://rapchieuphim.cjgnhgcoa3hk.us-east-1.rds.amazonaws.com:3306/qnucinema");
+		dataSource.setUsername("admin");
+		dataSource.setPassword("12345678");
 		return dataSource;
 	}
 	

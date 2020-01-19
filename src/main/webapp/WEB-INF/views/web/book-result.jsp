@@ -20,6 +20,7 @@
 					${timeParts[0]}:${timeParts[1]}
 				</li>
 				<li class="customlistli"><b class="customlistb">Tổng tiền: </b> <b>${bill.price}<i>đ</i></b></li>
+				
 				<li class="customlistli"><b class="customlistb">Chỗ ngồi: </b>${bill.seat}</li>
 			</ul>	
 		</div>

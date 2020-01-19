@@ -10,9 +10,13 @@
 	  <form action="<c:url value='/list-film'/>" id="formSubmit" method="get">
       <!-- Page Heading -->
       <h1 class="my-4">Phim
-        <small></small>
+        <small>Các phim đang chiếu</small>
       </h1>
-
+	
+	  <h1 class="my-4">
+        <small>Các phim đang chiếu</small>
+      </h1>
+      
       <div class="row">
       	<c:forEach var="item" items="${model.listResult}">
 	        <div class="col-lg-4 col-sm-6 portfolio-item">

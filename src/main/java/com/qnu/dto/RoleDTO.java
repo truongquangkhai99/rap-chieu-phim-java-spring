@@ -27,5 +27,4 @@ public class RoleDTO {
 	public void setCode(String code) {
 		this.code = code;
 	}
-	
 }

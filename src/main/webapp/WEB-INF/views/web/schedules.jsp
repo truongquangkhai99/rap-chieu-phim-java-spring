@@ -88,7 +88,7 @@
 					 	</security:authorize>
 			    		<a href="${booking}">
 			    			<c:set var="timeParts" value="${fn:split(schedule.timeStart, ' ')}" />
-			      			<button type="button" id="btn" class="btn btn-secondary" style="margin-right: 10px;">
+			      			<button type="button" id="btn" class="btn btn-secondary" style="margin-right: 10px; margin-bottom: 10px;">
 			      				${fn:split(timeParts[1], ':')[0]}:${fn:split(timeParts[1], ':')[1]}
 			      			</button>
 			      		</a>

@@ -67,6 +67,4 @@ public class BillEntity extends BaseEntity{
 	public void setSchedules(ScheduleEntity schedules) {
 		this.schedules = schedules;
 	}
-	
-	
 }
